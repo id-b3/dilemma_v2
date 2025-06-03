@@ -26,7 +26,7 @@ enum dilemma_keymap_layers {
 #define HM_T LCTL_T(KC_T)
 // Right Hand
 #define HM_O RGUI_T(KC_O)
-#define HM_I LALT_T(KC_I)
+#define HM_I KC_I
 #define HM_E RSFT_T(KC_E)
 #define HM_N RCTL_T(KC_N)
 
@@ -62,7 +62,7 @@ enum qmk_combos {
 // Existing combo key definitions
 const uint16_t PROGMEM combo_esc_keys[]  = {KC_W, KC_F, COMBO_END};
 const uint16_t PROGMEM combo_unds_keys[] = {HM_S, HM_T, COMBO_END};
-const uint16_t PROGMEM combo_sqt_keys[]  = {HM_E, HM_N, COMBO_END}; // Tap of RSFT_T(E), RCTL_T(N)
+const uint16_t PROGMEM combo_sqt_keys[]  = {HM_E, HM_I, COMBO_END}; // Tap of RSFT_T(E), RCTL_T(N)
 const uint16_t PROGMEM combo_del_keys[]  = {HM_A, HM_R, COMBO_END}; // Tap of LGUI_T(A), LALT_T(R)
 const uint16_t PROGMEM combo_nubs_keys[] = {KC_U, KC_Y, COMBO_END};
 const uint16_t PROGMEM combo_cw_keys[]   = {HM_S, HM_E, COMBO_END}; // Tap of LSFT_T(S), RSFT_T(E)
