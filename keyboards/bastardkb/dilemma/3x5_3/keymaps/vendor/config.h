@@ -26,5 +26,4 @@
 
 #define COMBO_TERM 40
 
-#define SPLIT_HAND_PIN GP29
-#define SPLIT_HAND_PIN_LOW_IS_LEFT
+#define MASTER_RIGHT

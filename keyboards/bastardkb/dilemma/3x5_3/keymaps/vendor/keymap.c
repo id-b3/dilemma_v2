@@ -26,7 +26,7 @@ enum dilemma_keymap_layers {
 #define HM_T LCTL_T(KC_T)
 // Right Hand
 #define HM_O RGUI_T(KC_O)
-#define HM_I LALT_T(KC_I) // As per ZMK config (&hm LALT I)
+#define HM_I LALT_T(KC_I)
 #define HM_E RSFT_T(KC_E)
 #define HM_N RCTL_T(KC_N)
 
@@ -53,11 +53,11 @@ enum qmk_combos {
 
 // Use full advanced keycodes for keys involved in combos
 const uint16_t PROGMEM combo_esc_wf_keys[]  = {KC_W, KC_F, COMBO_END};
-const uint16_t PROGMEM combo_unds_st_keys[] = {HM_S, HM_T, COMBO_END}; // LSFT_T(KC_S), LCTL_T(KC_T)
-const uint16_t PROGMEM combo_sqt_ei_keys[]  = {HM_E, HM_I, COMBO_END}; // RSFT_T(KC_E), LALT_T(KC_I)
-const uint16_t PROGMEM combo_del_ar_keys[]  = {HM_A, HM_R, COMBO_END}; // LGUI_T(KC_A), LALT_T(KC_R)
+const uint16_t PROGMEM combo_unds_st_keys[] = {HM_S, HM_T, COMBO_END};
+const uint16_t PROGMEM combo_sqt_ei_keys[]  = {HM_E, HM_I, COMBO_END};
+const uint16_t PROGMEM combo_del_ar_keys[]  = {HM_A, HM_R, COMBO_END};
 const uint16_t PROGMEM combo_nubs_ul_keys[] = {KC_U, KC_L, COMBO_END};
-const uint16_t PROGMEM combo_cw_se_keys[]   = {HM_S, HM_E, COMBO_END}; // LSFT_T(KC_S), RSFT_T(KC_E)
+const uint16_t PROGMEM combo_cw_se_keys[]   = {HM_S, HM_E, COMBO_END};
 
 combo_t key_combos[] = {
   [C_ESC_WF]  = COMBO(combo_esc_wf_keys, KC_ESC),
@@ -75,9 +75,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // Left Hand                                       // Right Hand
     KC_Q,    KC_W,    KC_F,    KC_P,    KC_G,          KC_SCLN, KC_Y,    KC_U,    KC_L,    KC_J,
     HM_A,    HM_R,    HM_S,    HM_T,    KC_D,          HM_O,    HM_I,    HM_E,    HM_N,    KC_H,
-    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,          KC_SLSH, KC_DOT,  KC_COMM, KC_M,    KC_K,
-                      // Thumbs (Corrected order: Inner, Middle, Outer per hand)
-                      KC_ESC, LT(_SYMNUM, KC_SPC), LT(_NAVFUNC, KC_ENT),   KC_MUTE, KC_BSPC, LT(_NAVFUNC, KC_TAB)
+    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,          KC_SLSH, KC_DOT,  KC_COMM, KC_M,    KC_K, 
+    (_NAVFUNC, KC_ENT), LT(_SYMNUM, KC_SPC), KC_ESC,   KC_BSPC, LT(_NAVFUNC, KC_TAB), KC_MUTE
   ),
 
   [_SYMNUM] = LAYOUT_split_3x5_3(
@@ -105,9 +104,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     QK_BOOT, EE_CLR,  KC_NO,   DPI_MOD, S_D_MOD,       QK_BOOT, EE_CLR,  KC_NO,   DPI_MOD, S_D_MOD,
     KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, KC_NO,         KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, KC_NO,
     KC_TRNS, DRGSCRL, SNIPING, KC_BTN3, KC_NO,         KC_TRNS, DRGSCRL, SNIPING, KC_BTN3, KC_NO,
-                // Thumbs (VIA JSON order: Inner, Middle, Outer on Left; Outer, Middle, Inner on Right if matching buttons)
-                // Kept as per VIA JSON for this layer: KC_BTN3, KC_BTN2, KC_BTN1,  KC_BTN1, KC_BTN2, KC_BTN3
-                // This means left inner is BTN3, right inner is BTN1. If this needs to be swapped for _POINTER layer too, adjust accordingly.
                       KC_BTN3, KC_BTN2, KC_BTN1,       KC_BTN1, KC_BTN2, KC_BTN3
   ),
 
