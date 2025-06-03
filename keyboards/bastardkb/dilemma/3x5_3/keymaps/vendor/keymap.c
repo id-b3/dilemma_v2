@@ -62,7 +62,7 @@ enum qmk_combos {
 // Existing combo key definitions
 const uint16_t PROGMEM combo_esc_keys[]  = {KC_W, KC_F, COMBO_END};
 const uint16_t PROGMEM combo_unds_keys[] = {HM_S, HM_T, COMBO_END};
-const uint16_t PROGMEM combo_sqt_keys[]  = {HM_E, HM_I, COMBO_END}; // Tap of RSFT_T(E), RCTL_T(N)
+const uint16_t PROGMEM combo_sqt_keys[]  = {HM_E, HM_N, COMBO_END}; // Tap of RSFT_T(E), RCTL_T(N)
 const uint16_t PROGMEM combo_del_keys[]  = {HM_A, HM_R, COMBO_END}; // Tap of LGUI_T(A), LALT_T(R)
 const uint16_t PROGMEM combo_nubs_keys[] = {KC_U, KC_Y, COMBO_END};
 const uint16_t PROGMEM combo_cw_keys[]   = {HM_S, HM_E, COMBO_END}; // Tap of LSFT_T(S), RSFT_T(E)
@@ -101,11 +101,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_BASE] = LAYOUT_split_3x5_3(
     // Left Hand                                       // Right Hand
     KC_Q,    KC_W,    KC_F,    KC_P,    KC_G,          KC_J, KC_L, KC_U, KC_Y, KC_SCLN,
-    HM_A,    HM_R,    HM_S,    HM_T,    KC_D,          KC_H, HM_N,    HM_E,    HM_I,    HM_O,
+    HM_A,    HM_R,    HM_S,    HM_T,    KC_D,          KC_H, HM_N,  HM_E,  HM_I,    HM_O,
     KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,          KC_K, KC_M,  KC_COMM, KC_DOT,    KC_SLSH, 
     KC_ESC, LT(_NAVFUNC, KC_ENT), LT(_SYMNUM, KC_SPC),    KC_BSPC, LT(_NAVFUNC, KC_TAB), KC_MUTE
   ),
-
+  
   [_SYMNUM] = LAYOUT_split_3x5_3(
     KC_NO,   KC_AT,   KC_DQUO, KC_LPRN, KC_RPRN,       KC_GRV,  KC_9,    KC_8,    KC_7,    KC_NO,
     KC_NUHS, KC_EQL,  KC_MINS, KC_EXLM, KC_PERC,       KC_0,    KC_6,    KC_5,    KC_4,    KC_NO,
