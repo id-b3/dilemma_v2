@@ -42,12 +42,23 @@ void dilemma_set_pointer_sniping_enabled(bool enabled);
 
 // --- Combos ---
 enum qmk_combos {
-  C_ESC_WF, // ZMK combo_esc (W, F)
-  C_UNDS_ST, // ZMK combo_underscore (S, T)
-  C_SQT_EI,  // ZMK combo_quote (E, I)
-  C_DEL_AR,  // ZMK combo_del (A, R)
-  C_NUBS_UL, // ZMK combo_bslsh (U, L)
-  C_CW_SE,   // ZMK combo_caps (S, E)
+  // Existing
+  C_ESC,
+  C_UNDS,
+  C_SQT,
+  C_DEL,
+  C_NUBS,
+  C_CW,
+  // New Brackets
+  C_LPRN, // (
+  C_RPRN, // )
+  C_LBRC, // [
+  C_RBRC, // ]
+  C_LCBR, // {
+  C_RCBR, // }
+  // New Copy/Paste
+  C_COPY,
+  C_PASTE,
   COMBO_COUNT
 };
 
