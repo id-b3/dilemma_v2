@@ -2,40 +2,33 @@
  * Copyright 2022 Charly Delay <charly@codesink.dev> (@0xcharly)
  * Copyright 2023 casuanoob <casuanoob@hotmail.com> (@casuanoob)
  * Copyright 2024 (Your Name/Handle) for modifications
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 #include QMK_KEYBOARD_H
 
 // Layer Names based on VIA JSON and intended use
 enum dilemma_keymap_layers {
-    _BASE = 0,       // VIA Layer 0: Colemak-like base
-    _SYMNUM,         // VIA Layer 1: Symbols & Numbers mix
-    _NAVFUNC,        // VIA Layer 2: Navigation & Function keys mix
-    _MEDIA,          // VIA Layer 3: Media & RGB
-    _POINTER,        // VIA Layer 4: Mouse Pointer & Config
-    _NUMPAD_L,       // VIA Layer 5: Numpad (primarily left hand)
-    _SYMBOLS_L,      // VIA Layer 6: Symbols (primarily left hand)
-    _UNUSED_VIA7,    // VIA Layer 7: All KC_TRNS in VIA
+    _BASE = 0,
+    _SYMNUM,
+    _NAVFUNC,
+    _MEDIA,
+    _POINTER,
+    _NUMPAD_L,
+    _SYMBOLS_L,
+    _UNUSED_VIA7,
 };
 
-// Custom Keycodes (start after SAFE_RANGE) - Can be removed if no custom keycodes are used
-// enum custom_keycodes {
-//     // CSTM_KEY = SAFE_RANGE,
-// };
-
+// --- Home Row Mod Aliases for Combos ---
+// Left Hand
+#define HM_A LGUI_T(KC_A)
+#define HM_R LALT_T(KC_R)
+#define HM_S LSFT_T(KC_S)
+#define HM_T LCTL_T(KC_T)
+// Right Hand
+#define HM_O RGUI_T(KC_O)
+#define HM_I LALT_T(KC_I) // As per ZMK config (&hm LALT I)
+#define HM_E RSFT_T(KC_E)
+#define HM_N RCTL_T(KC_N)
 
 // For custom keycodes used in LAYER_POINTER, matching VIA's CUSTOM(x)
 #ifndef POINTING_DEVICE_ENABLE
@@ -45,50 +38,52 @@ enum dilemma_keymap_layers {
 #    define SNIPING KC_NO
 #else
 void dilemma_set_pointer_sniping_enabled(bool enabled);
-#endif // !POINTING_DEVICE_ENABLE
+#endif
 
 // --- Combos ---
 enum qmk_combos {
-  C_ESC,
-  C_UNDS,
-  C_SQT,
-  C_DEL,
-  C_NUBS,
-  C_CW,
+  C_ESC_WF, // ZMK combo_esc (W, F)
+  C_UNDS_ST, // ZMK combo_underscore (S, T)
+  C_SQT_EI,  // ZMK combo_quote (E, I)
+  C_DEL_AR,  // ZMK combo_del (A, R)
+  C_NUBS_UL, // ZMK combo_bslsh (U, L)
+  C_CW_SE,   // ZMK combo_caps (S, E)
   COMBO_COUNT
 };
 
-const uint16_t PROGMEM combo_esc_keys[]  = {KC_W, KC_F, COMBO_END};
-const uint16_t PROGMEM combo_unds_keys[] = {KC_S, KC_T, COMBO_END};
-const uint16_t PROGMEM combo_sqt_keys[]  = {KC_E, KC_N, COMBO_END};
-const uint16_t PROGMEM combo_del_keys[]  = {KC_A, KC_R, COMBO_END};
-const uint16_t PROGMEM combo_nubs_keys[] = {KC_U, KC_L, COMBO_END};
-const uint16_t PROGMEM combo_cw_keys[]   = {KC_S, KC_E, COMBO_END};
+// Use full advanced keycodes for keys involved in combos
+const uint16_t PROGMEM combo_esc_wf_keys[]  = {KC_W, KC_F, COMBO_END};
+const uint16_t PROGMEM combo_unds_st_keys[] = {HM_S, HM_T, COMBO_END}; // LSFT_T(KC_S), LCTL_T(KC_T)
+const uint16_t PROGMEM combo_sqt_ei_keys[]  = {HM_E, HM_I, COMBO_END}; // RSFT_T(KC_E), LALT_T(KC_I)
+const uint16_t PROGMEM combo_del_ar_keys[]  = {HM_A, HM_R, COMBO_END}; // LGUI_T(KC_A), LALT_T(KC_R)
+const uint16_t PROGMEM combo_nubs_ul_keys[] = {KC_U, KC_L, COMBO_END};
+const uint16_t PROGMEM combo_cw_se_keys[]   = {HM_S, HM_E, COMBO_END}; // LSFT_T(KC_S), RSFT_T(KC_E)
 
 combo_t key_combos[] = {
-  [C_ESC]  = COMBO(combo_esc_keys, KC_ESC),
-  [C_UNDS] = COMBO(combo_unds_keys, KC_UNDS),
-  [C_SQT]  = COMBO(combo_sqt_keys, KC_QUOT),
-  [C_DEL]  = COMBO(combo_del_keys, KC_DEL),
-  [C_NUBS] = COMBO(combo_nubs_keys, KC_NUBS),
-  [C_CW]   = COMBO(combo_cw_keys, CW_TOGG),
+  [C_ESC_WF]  = COMBO(combo_esc_wf_keys, KC_ESC),
+  [C_UNDS_ST] = COMBO(combo_unds_st_keys, KC_UNDS),
+  [C_SQT_EI]  = COMBO(combo_sqt_ei_keys, KC_QUOT),
+  [C_DEL_AR]  = COMBO(combo_del_ar_keys, KC_DEL),
+  [C_NUBS_UL] = COMBO(combo_nubs_ul_keys, KC_NUBS),
+  [C_CW_SE]   = COMBO(combo_cw_se_keys, CW_TOGG),
 };
 // --- End Combos ---
-
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_BASE] = LAYOUT_split_3x5_3(
+    // Left Hand                                       // Right Hand
     KC_Q,    KC_W,    KC_F,    KC_P,    KC_G,          KC_SCLN, KC_Y,    KC_U,    KC_L,    KC_J,
-    LGUI_T(KC_A), LALT_T(KC_R), LSFT_T(KC_S), LCTL_T(KC_T), KC_D,  RGUI_T(KC_O), LALT_T(KC_I), RSFT_T(KC_E), RCTL_T(KC_N), KC_H,
+    HM_A,    HM_R,    HM_S,    HM_T,    KC_D,          HM_O,    HM_I,    HM_E,    HM_N,    KC_H,
     KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,          KC_SLSH, KC_DOT,  KC_COMM, KC_M,    KC_K,
-                      LT(_NAVFUNC, KC_ENT), LT(_SYMNUM, KC_SPC), KC_ESC,    LT(_NAVFUNC, KC_TAB), KC_BSPC, KC_MUTE
+                      // Thumbs (Corrected order: Inner, Middle, Outer per hand)
+                      KC_ESC, LT(_SYMNUM, KC_SPC), LT(_NAVFUNC, KC_ENT),   KC_MUTE, KC_BSPC, LT(_NAVFUNC, KC_TAB)
   ),
 
   [_SYMNUM] = LAYOUT_split_3x5_3(
     KC_NO,   KC_AT,   KC_DQUO, KC_LPRN, KC_RPRN,       KC_GRV,  KC_9,    KC_8,    KC_7,    KC_NO,
     KC_NUHS, KC_EQL,  KC_MINS, KC_EXLM, KC_PERC,       KC_0,    KC_6,    KC_5,    KC_4,    KC_NO,
-    KC_NO,   KC_LCBR, KC_RCBR, KC_LBRC, KC_RBRC,       KC_DOT,  KC_3,    KC_2,    KC_1,    KC_NO, // Replaced Macro with KC_NO
+    KC_NO,   KC_LCBR, KC_RCBR, KC_LBRC, KC_RBRC,       KC_DOT,  KC_3,    KC_2,    KC_1,    KC_NO,
                       KC_TRNS, KC_TRNS, KC_TRNS,       KC_TRNS, KC_TRNS, KC_TRNS
   ),
 
@@ -110,6 +105,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     QK_BOOT, EE_CLR,  KC_NO,   DPI_MOD, S_D_MOD,       QK_BOOT, EE_CLR,  KC_NO,   DPI_MOD, S_D_MOD,
     KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, KC_NO,         KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, KC_NO,
     KC_TRNS, DRGSCRL, SNIPING, KC_BTN3, KC_NO,         KC_TRNS, DRGSCRL, SNIPING, KC_BTN3, KC_NO,
+                // Thumbs (VIA JSON order: Inner, Middle, Outer on Left; Outer, Middle, Inner on Right if matching buttons)
+                // Kept as per VIA JSON for this layer: KC_BTN3, KC_BTN2, KC_BTN1,  KC_BTN1, KC_BTN2, KC_BTN3
+                // This means left inner is BTN3, right inner is BTN1. If this needs to be swapped for _POINTER layer too, adjust accordingly.
                       KC_BTN3, KC_BTN2, KC_BTN1,       KC_BTN1, KC_BTN2, KC_BTN3
   ),
 
@@ -135,6 +133,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   )
 };
 // clang-format on
+
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    if (process_combo_event(keycode, record)) {
+        return false;
+    }
+    return true;
+}
 
 
 #ifdef POINTING_DEVICE_ENABLE
