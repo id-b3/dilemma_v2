@@ -62,9 +62,9 @@ enum qmk_combos {
 // Existing combo key definitions
 const uint16_t PROGMEM combo_esc_keys[]  = {KC_W, KC_F, COMBO_END};
 const uint16_t PROGMEM combo_unds_keys[] = {HM_S, HM_T, COMBO_END};
-const uint16_t PROGMEM combo_sqt_keys[]  = {HM_E, HM_N, COMBO_END}; // Tap of RSFT_T(E), RCTL_T(N)
+const uint16_t PROGMEM combo_sqt_keys[]  = {HM_E, HM_I, COMBO_END}; // Tap of RSFT_T(E), RCTL_T(N)
 const uint16_t PROGMEM combo_del_keys[]  = {HM_A, HM_R, COMBO_END}; // Tap of LGUI_T(A), LALT_T(R)
-const uint16_t PROGMEM combo_nubs_keys[] = {KC_U, KC_L, COMBO_END};
+const uint16_t PROGMEM combo_nubs_keys[] = {KC_U, KC_Y, COMBO_END};
 const uint16_t PROGMEM combo_cw_keys[]   = {HM_S, HM_E, COMBO_END}; // Tap of LSFT_T(S), RSFT_T(E)
 
 // New Bracket combo key definitions
