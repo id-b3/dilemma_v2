@@ -26,4 +26,5 @@
 
 #define COMBO_TERM 40
 
+#undef SPLIT_HAND_PIN
 #define MASTER_RIGHT
