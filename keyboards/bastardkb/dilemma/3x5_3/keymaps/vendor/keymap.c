@@ -134,15 +134,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 // clang-format on
 
-
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    if (process_combo_event(keycode, record)) {
-        return false;
-    }
-    return true;
-}
-
-
 #ifdef POINTING_DEVICE_ENABLE
 #    ifdef DILEMMA_AUTO_SNIPING_ON_LAYER
 layer_state_t layer_state_set_user(layer_state_t state) {
