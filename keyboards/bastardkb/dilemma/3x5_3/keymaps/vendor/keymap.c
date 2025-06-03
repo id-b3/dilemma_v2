@@ -56,19 +56,16 @@ enum qmk_combos {
   C_RBRC, // ]
   C_LCBR, // {
   C_RCBR, // }
-  // New Copy/Paste
-  C_COPY,
-  C_PASTE,
   COMBO_COUNT
 };
 
 // Existing combo key definitions
 const uint16_t PROGMEM combo_esc_keys[]  = {KC_W, KC_F, COMBO_END};
-const uint16_t PROGMEM combo_unds_keys[] = {KC_S, KC_T, COMBO_END};
-const uint16_t PROGMEM combo_sqt_keys[]  = {KC_E, KC_N, COMBO_END}; // Tap of RSFT_T(E), RCTL_T(N)
-const uint16_t PROGMEM combo_del_keys[]  = {KC_A, KC_R, COMBO_END}; // Tap of LGUI_T(A), LALT_T(R)
+const uint16_t PROGMEM combo_unds_keys[] = {HM_S, HM_T, COMBO_END};
+const uint16_t PROGMEM combo_sqt_keys[]  = {HM_E, HM_N, COMBO_END}; // Tap of RSFT_T(E), RCTL_T(N)
+const uint16_t PROGMEM combo_del_keys[]  = {HM_A, HM_R, COMBO_END}; // Tap of LGUI_T(A), LALT_T(R)
 const uint16_t PROGMEM combo_nubs_keys[] = {KC_U, KC_L, COMBO_END};
-const uint16_t PROGMEM combo_cw_keys[]   = {KC_S, KC_E, COMBO_END}; // Tap of LSFT_T(S), RSFT_T(E)
+const uint16_t PROGMEM combo_cw_keys[]   = {HM_S, HM_E, COMBO_END}; // Tap of LSFT_T(S), RSFT_T(E)
 
 // New Bracket combo key definitions
 const uint16_t PROGMEM combo_lprn_keys[] = {KC_F, KC_P, COMBO_END};    // (
@@ -77,10 +74,6 @@ const uint16_t PROGMEM combo_lbrc_keys[] = {KC_Z, KC_X, COMBO_END};    // [
 const uint16_t PROGMEM combo_rbrc_keys[] = {KC_X, KC_C, COMBO_END};    // ]
 const uint16_t PROGMEM combo_lcbr_keys[] = {KC_C, KC_V, COMBO_END};    // {
 const uint16_t PROGMEM combo_rcbr_keys[] = {KC_V, KC_B, COMBO_END};    // }
-
-// New Copy/Paste combo key definitions
-const uint16_t PROGMEM combo_copy_keys[] = {KC_T, KC_D, COMBO_END};    // LCTL(KC_C) - T is tap of LCTL_T(T)
-const uint16_t PROGMEM combo_paste_keys[] = {KC_T, KC_G, COMBO_END};   // LCTL(KC_V) - T is tap of LCTL_T(T)
 
 
 combo_t key_combos[] = {
@@ -98,9 +91,7 @@ combo_t key_combos[] = {
   [C_RBRC] = COMBO(combo_rbrc_keys, KC_RBRC), // ]
   [C_LCBR] = COMBO(combo_lcbr_keys, KC_LCBR), // Shift + [
   [C_RCBR] = COMBO(combo_rcbr_keys, KC_RCBR), // Shift + ]
-  // New Copy/Paste
-  [C_COPY]  = COMBO_ACTION(combo_copy_keys), // Use COMBO_ACTION for multi-key sequences
-  [C_PASTE] = COMBO_ACTION(combo_paste_keys),// Use COMBO_ACTION for multi-key sequences
+
 };
 
 // --- End Combos ---
