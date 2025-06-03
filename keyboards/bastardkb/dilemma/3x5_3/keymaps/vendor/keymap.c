@@ -62,13 +62,13 @@ enum qmk_combos {
   COMBO_COUNT
 };
 
-// Use full advanced keycodes for keys involved in combos
-const uint16_t PROGMEM combo_esc_wf_keys[]  = {KC_W, KC_F, COMBO_END};
-const uint16_t PROGMEM combo_unds_st_keys[] = {HM_S, HM_T, COMBO_END};
-const uint16_t PROGMEM combo_sqt_ei_keys[]  = {HM_E, HM_I, COMBO_END};
-const uint16_t PROGMEM combo_del_ar_keys[]  = {HM_A, HM_R, COMBO_END};
-const uint16_t PROGMEM combo_nubs_ul_keys[] = {KC_U, KC_L, COMBO_END};
-const uint16_t PROGMEM combo_cw_se_keys[]   = {HM_S, HM_E, COMBO_END};
+// Existing combo key definitions
+const uint16_t PROGMEM combo_esc_keys[]  = {KC_W, KC_F, COMBO_END};
+const uint16_t PROGMEM combo_unds_keys[] = {KC_S, KC_T, COMBO_END};
+const uint16_t PROGMEM combo_sqt_keys[]  = {KC_E, KC_N, COMBO_END}; // Tap of RSFT_T(E), RCTL_T(N)
+const uint16_t PROGMEM combo_del_keys[]  = {KC_A, KC_R, COMBO_END}; // Tap of LGUI_T(A), LALT_T(R)
+const uint16_t PROGMEM combo_nubs_keys[] = {KC_U, KC_L, COMBO_END};
+const uint16_t PROGMEM combo_cw_keys[]   = {KC_S, KC_E, COMBO_END}; // Tap of LSFT_T(S), RSFT_T(E)
 
 // New Bracket combo key definitions
 const uint16_t PROGMEM combo_lprn_keys[] = {KC_F, KC_P, COMBO_END};    // (
@@ -79,8 +79,8 @@ const uint16_t PROGMEM combo_lcbr_keys[] = {KC_C, KC_V, COMBO_END};    // {
 const uint16_t PROGMEM combo_rcbr_keys[] = {KC_V, KC_B, COMBO_END};    // }
 
 // New Copy/Paste combo key definitions
-const uint16_t PROGMEM combo_copy_keys[] = {HM_T, KC_D, COMBO_END};    // LCTL(KC_C) - T is tap of LCTL_T(T)
-const uint16_t PROGMEM combo_paste_keys[] = {HM_T, KC_G, COMBO_END};   // LCTL(KC_V) - T is tap of LCTL_T(T)
+const uint16_t PROGMEM combo_copy_keys[] = {KC_T, KC_D, COMBO_END};    // LCTL(KC_C) - T is tap of LCTL_T(T)
+const uint16_t PROGMEM combo_paste_keys[] = {KC_T, KC_G, COMBO_END};   // LCTL(KC_V) - T is tap of LCTL_T(T)
 
 
 combo_t key_combos[] = {
