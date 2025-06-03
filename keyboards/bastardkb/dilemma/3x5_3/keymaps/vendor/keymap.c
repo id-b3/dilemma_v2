@@ -59,14 +59,39 @@ const uint16_t PROGMEM combo_del_ar_keys[]  = {HM_A, HM_R, COMBO_END};
 const uint16_t PROGMEM combo_nubs_ul_keys[] = {KC_U, KC_L, COMBO_END};
 const uint16_t PROGMEM combo_cw_se_keys[]   = {HM_S, HM_E, COMBO_END};
 
+// New Bracket combo key definitions
+const uint16_t PROGMEM combo_lprn_keys[] = {KC_F, KC_P, COMBO_END};    // (
+const uint16_t PROGMEM combo_rprn_keys[] = {KC_P, KC_G, COMBO_END};    // )
+const uint16_t PROGMEM combo_lbrc_keys[] = {KC_Z, KC_X, COMBO_END};    // [
+const uint16_t PROGMEM combo_rbrc_keys[] = {KC_X, KC_C, COMBO_END};    // ]
+const uint16_t PROGMEM combo_lcbr_keys[] = {KC_C, KC_V, COMBO_END};    // {
+const uint16_t PROGMEM combo_rcbr_keys[] = {KC_V, KC_B, COMBO_END};    // }
+
+// New Copy/Paste combo key definitions
+const uint16_t PROGMEM combo_copy_keys[] = {HM_T, KC_D, COMBO_END};    // LCTL(KC_C) - T is tap of LCTL_T(T)
+const uint16_t PROGMEM combo_paste_keys[] = {HM_T, KC_G, COMBO_END};   // LCTL(KC_V) - T is tap of LCTL_T(T)
+
+
 combo_t key_combos[] = {
-  [C_ESC_WF]  = COMBO(combo_esc_wf_keys, KC_ESC),
-  [C_UNDS_ST] = COMBO(combo_unds_st_keys, KC_UNDS),
-  [C_SQT_EI]  = COMBO(combo_sqt_ei_keys, KC_QUOT),
-  [C_DEL_AR]  = COMBO(combo_del_ar_keys, KC_DEL),
-  [C_NUBS_UL] = COMBO(combo_nubs_ul_keys, KC_NUBS),
-  [C_CW_SE]   = COMBO(combo_cw_se_keys, CW_TOGG),
+  // Existing
+  [C_ESC]  = COMBO(combo_esc_keys, KC_ESC),
+  [C_UNDS] = COMBO(combo_unds_keys, KC_UNDS),
+  [C_SQT]  = COMBO(combo_sqt_keys, KC_QUOT),
+  [C_DEL]  = COMBO(combo_del_keys, KC_DEL),
+  [C_NUBS] = COMBO(combo_nubs_keys, KC_NUBS),
+  [C_CW]   = COMBO(combo_cw_keys, CW_TOGG),
+  // New Brackets
+  [C_LPRN] = COMBO(combo_lprn_keys, KC_LPRN), // Shift + 9
+  [C_RPRN] = COMBO(combo_rprn_keys, KC_RPRN), // Shift + 0
+  [C_LBRC] = COMBO(combo_lbrc_keys, KC_LBRC), // [
+  [C_RBRC] = COMBO(combo_rbrc_keys, KC_RBRC), // ]
+  [C_LCBR] = COMBO(combo_lcbr_keys, KC_LCBR), // Shift + [
+  [C_RCBR] = COMBO(combo_rcbr_keys, KC_RCBR), // Shift + ]
+  // New Copy/Paste
+  [C_COPY]  = COMBO_ACTION(combo_copy_keys), // Use COMBO_ACTION for multi-key sequences
+  [C_PASTE] = COMBO_ACTION(combo_paste_keys),// Use COMBO_ACTION for multi-key sequences
 };
+
 // --- End Combos ---
 
 // clang-format off
